@@ -1,0 +1,708 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --green: #3cff68;
+    --green-dark: #284a2d;
+    --green-dim: #58725b;
+    --red: #ff5555;
+    --bg: #020302;
+}
+
+html {
+    background: var(--bg);
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #142016 0%,
+            #050805 55%,
+            #020302 100%
+        );
+
+    color: #d8ffd8;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 30px;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   CRT EFFECT
+========================= */
+
+.scanlines {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.025),
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+    width: min(720px, 95vw);
+
+    padding: 40px;
+
+    border: 1px solid var(--green);
+
+    background:
+        rgba(3,10,4,0.92);
+
+    box-shadow:
+        0 0 25px rgba(60,255,104,0.15),
+        inset 0 0 50px rgba(60,255,104,0.03);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.system-status {
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: var(--green);
+
+    margin-bottom: 12px;
+}
+
+.status-dot {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+
+    51%, 100% {
+        opacity: 0.2;
+    }
+}
+
+h1 {
+    font-size:
+        clamp(24px, 5vw, 42px);
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 15px
+        rgba(60,255,104,0.7);
+}
+
+header p {
+    margin-top: 10px;
+
+    color: #638267;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   PANELS
+========================= */
+
+.panel {
+    border: 1px solid var(--green-dark);
+
+    background:
+        rgba(0,0,0,0.35);
+
+    padding: 25px;
+
+    margin-bottom: 18px;
+}
+
+.panel-title {
+    font-size: 10px;
+
+    color: #5d9f65;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   TARGET
+========================= */
+
+.target-word {
+    text-align: center;
+
+    font-size: 48px;
+
+    color: var(--red);
+
+    text-shadow:
+        0 0 15px
+        rgba(255,50,50,0.6);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result {
+    min-height: 100px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 70px;
+
+    letter-spacing: 15px;
+
+    color: white;
+
+    text-shadow:
+        0 0 20px
+        rgba(255,255,255,0.5);
+}
+
+.system-message {
+    text-align: center;
+
+    min-height: 20px;
+
+    font-size: 11px;
+
+    color: #6c9c73;
+
+    letter-spacing: 2px;
+}
+
+.evaluation {
+    text-align: center;
+
+    margin-top: 8px;
+
+    min-height: 20px;
+
+    color: var(--green);
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================
+   SCORE
+========================= */
+
+.score-panel {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.score-box {
+    border: 1px solid var(--green-dark);
+
+    padding: 18px;
+
+    text-align: center;
+
+    background:
+        rgba(0,0,0,0.3);
+}
+
+.score-box span {
+    display: block;
+
+    color: #638267;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+.score-box strong {
+    font-size: 32px;
+
+    color: var(--green);
+}
+
+
+/* =========================
+   GENERATE BUTTON
+========================= */
+
+.generate-button {
+    width: 100%;
+
+    padding: 21px;
+
+    margin-bottom: 20px;
+
+    background: transparent;
+
+    color: var(--green);
+
+    border: 1px solid var(--green);
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    letter-spacing: 5px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        color 0.2s,
+        box-shadow 0.2s,
+        transform 0.1s;
+}
+
+.generate-button:hover {
+    background: var(--green);
+
+    color: #020302;
+
+    box-shadow:
+        0 0 30px
+        rgba(60,255,104,0.5);
+}
+
+.generate-button:active {
+    transform: scale(0.98);
+}
+
+.generate-button:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+}
+
+
+/* =========================
+   PROBABILITY
+========================= */
+
+.probability-panel {
+    border: 1px solid var(--green-dark);
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+}
+
+.probability-buttons {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 8px;
+}
+
+.mode-button {
+    padding: 13px;
+
+    background: transparent;
+
+    color: #6f8f72;
+
+    border: 1px solid var(--green-dark);
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    letter-spacing: 2px;
+
+    transition: 0.2s;
+}
+
+.mode-button:hover {
+    border-color: var(--green);
+
+    color: var(--green);
+}
+
+.mode-button.active {
+    background: var(--green);
+
+    color: #020302;
+
+    border-color: var(--green);
+
+    box-shadow:
+        0 0 15px
+        rgba(60,255,104,0.4);
+}
+
+.mode-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 18px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid #1c3520;
+
+    font-size: 9px;
+
+    color: var(--green-dim);
+}
+
+.mode-info strong {
+    color: #b8ffbd;
+
+    margin-left: 8px;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.stats div {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 12px;
+
+    border-bottom:
+        1px solid #1c3520;
+}
+
+.stats span {
+    color: var(--green-dim);
+
+    font-size: 10px;
+}
+
+.stats strong {
+    color: #b8ffbd;
+}
+
+
+/* =========================
+   LOG
+========================= */
+
+.log-panel {
+    margin-top: 25px;
+
+    border-top:
+        1px solid #1c3520;
+
+    padding-top: 20px;
+}
+
+#log {
+    height: 75px;
+
+    overflow: hidden;
+
+    color: #426c49;
+
+    font-size: 9px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   PERFECT
+========================= */
+
+.perfect {
+    animation:
+        perfectFlash
+        0.5s
+        infinite alternate;
+}
+
+@keyframes perfectFlash {
+    from {
+        text-shadow:
+            0 0 10px var(--green);
+    }
+
+    to {
+        text-shadow:
+            0 0 35px var(--green);
+    }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+
+    margin-top: 25px;
+
+    font-size: 8px;
+
+    color: #3b563e;
+
+    letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   SMARTPHONE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding: 12px;
+
+        padding-bottom: 105px;
+
+    }
+
+
+    .container {
+
+        width: 100%;
+
+        padding: 20px 15px;
+
+        border-left: none;
+
+        border-right: none;
+
+    }
+
+
+    header {
+
+        margin-bottom: 20px;
+
+    }
+
+
+    h1 {
+
+        font-size: 24px;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    header p {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .panel {
+
+        padding: 18px;
+
+    }
+
+
+    .target-word {
+
+        font-size: 38px;
+
+    }
+
+
+    .result {
+
+        min-height: 110px;
+
+        font-size: 52px;
+
+        letter-spacing: 8px;
+
+    }
+
+
+    .score-panel {
+
+        gap: 8px;
+
+    }
+
+
+    .score-box {
+
+        padding: 15px 8px;
+
+    }
+
+
+    .score-box strong {
+
+        font-size: 27px;
+
+    }
+
+
+    /*
+       スマホではGENERATEを
+       画面下に固定
+    */
+
+    .generate-button {
+
+        position: fixed;
+
+        left: 15px;
+
+        right: 15px;
+
+        bottom: 15px;
+
+        width: auto;
+
+        margin: 0;
+
+        z-index: 90;
+
+        padding: 18px;
+
+        background:
+            rgba(2,3,2,0.95);
+
+        backdrop-filter: blur(8px);
+
+        box-shadow:
+            0 0 20px
+            rgba(60,255,104,0.15);
+
+    }
+
+
+    .probability-panel {
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .mode-button {
+
+        padding: 15px 5px;
+
+        font-size: 11px;
+
+    }
+
+
+    .mode-info {
+
+        flex-direction: column;
+
+        gap: 9px;
+
+    }
+
+
+    .stats {
+
+        gap: 8px;
+
+    }
+
+
+    .stats div {
+
+        flex-direction: column;
+
+        gap: 5px;
+
+    }
+
+
+    .log-panel {
+
+        margin-bottom: 10px;
+
+    }
+
+
+    footer {
+
+        margin-bottom: 10px;
+
+    }
+
+}

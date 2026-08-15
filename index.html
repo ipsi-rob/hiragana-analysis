@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HIRAGANA ANALYSIS SYSTEM</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<div class="scanlines"></div>
+
+
+<main class="container">
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="system-status">
+
+            <span class="status-dot">●</span>
+
+            SYSTEM ONLINE
+
+        </div>
+
+
+        <h1>
+            TINTIN ANALYSIS
+        </h1>
+
+
+        <p>
+            RANDOM CHARACTER GENERATION SYSTEM
+        </p>
+
+    </header>
+
+
+
+    <!-- TARGET -->
+
+    <section class="panel target-panel">
+
+        <div class="panel-title">
+            TARGET SEQUENCE
+        </div>
+
+
+        <div class="target-word">
+            ちんこ
+        </div>
+
+    </section>
+
+
+
+    <!-- RESULT -->
+
+    <section class="panel result-panel">
+
+        <div class="panel-title">
+            GENERATED SEQUENCE
+        </div>
+
+
+        <div
+            id="result"
+            class="result"
+        >
+            ？？？
+        </div>
+
+
+        <div
+            id="systemMessage"
+            class="system-message"
+        >
+            SYSTEM READY
+        </div>
+
+
+        <div
+            id="evaluation"
+            class="evaluation"
+        >
+            WAITING...
+        </div>
+
+    </section>
+
+
+
+    <!-- SCORE -->
+
+    <section class="score-panel">
+
+
+        <div class="score-box">
+
+            <span>
+                SCORE
+            </span>
+
+
+            <strong id="score">
+                000
+            </strong>
+
+        </div>
+
+
+
+        <div class="score-box">
+
+            <span>
+                SIMILARITY
+            </span>
+
+
+            <strong id="similarity">
+                0%
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- GENERATE BUTTON -->
+
+    <button
+        type="button"
+        id="generateButton"
+        class="generate-button"
+    >
+        GENERATE
+    </button>
+
+
+
+    <!-- PROBABILITY -->
+
+    <section class="probability-panel">
+
+        <div class="panel-title">
+            GENERATION PROBABILITY
+        </div>
+
+
+        <div class="probability-buttons">
+
+
+            <button
+                type="button"
+                class="mode-button active"
+                data-mode="LOW"
+            >
+                LOW
+            </button>
+
+
+            <button
+                type="button"
+                class="mode-button"
+                data-mode="NORMAL"
+            >
+                NORMAL
+            </button>
+
+
+            <button
+                type="button"
+                class="mode-button"
+                data-mode="HIGH"
+            >
+                HIGH
+            </button>
+
+
+        </div>
+
+
+
+        <div class="mode-info">
+
+
+            <div>
+
+                CURRENT MODE
+
+                <strong id="currentMode">
+                    LOW
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                PERFECT ODDS
+
+                <strong id="perfectOdds">
+                    1 / 100000
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+
+        <div>
+
+            <span>
+                ATTEMPTS
+            </span>
+
+
+            <strong id="attempts">
+                000
+            </strong>
+
+        </div>
+
+
+
+        <div>
+
+            <span>
+                BEST SCORE
+            </span>
+
+
+            <strong id="bestScore">
+                000
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- SYSTEM LOG -->
+
+    <section class="log-panel">
+
+        <div class="panel-title">
+            SYSTEM LOG
+        </div>
+
+
+        <div id="log">
+
+            &gt; SYSTEM INITIALIZED<br>
+
+            &gt; WAITING FOR INPUT...
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        HIRAGANA ANALYSIS SYSTEM //
+        VERSION 1.0.0
+
+    </footer>
+
+
+</main>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
